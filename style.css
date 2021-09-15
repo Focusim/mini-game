@@ -1,18 +1,18 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
 
-.bg{
+.bg {
     background: linear-gradient(red, blue, purple);
     height: 100vh;
     position: relative;
 }
 
-.inner{
+.inner {
     width: 100px;
     height: 100px;
-    background: radial-gradient(red, blue,purple);
+    background: radial-gradient(red, blue, purple);
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -20,7 +20,7 @@ body{
     font-size: 30px;
     color: gray;
     position: absolute;
-    top: 100px;
-    left: 100px;
+    top: 0px;
+    left: 0px;
     border: 1px solid white;
 }
