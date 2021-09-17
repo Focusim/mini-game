@@ -1,12 +1,50 @@
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .bg {
     background: linear-gradient(red, blue, purple);
     height: 100vh;
     position: relative;
+}
+
+.bg:before{
+    content: 'Управление Ctrl + Стрелки';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    font-size: 30px;
+    animation-name: bgbefore;
+    animation-duration: 5s;
+    animation-delay: 1s;
+    animation-timing-function: cubic-bezier(1,1,1,1);
+    opacity: 0;
+    z-index: 100;
+}
+
+@keyframes bgbefore {
+    from{
+        margin-left: 0px;
+        opacity: 0;
+        color: white;
+    }
+    20%{
+        margin-left: 20px;
+        opacity: 1;
+        color: red;
+    }
+    50%{
+        margin-left: 50px;
+        color: purple;
+    }
+    to{
+        margin-left: 100px;
+        opacity: 0;
+        color: white;
+    }
+
 }
 
 .inner {
@@ -20,7 +58,34 @@ body {
     font-size: 30px;
     color: gray;
     position: absolute;
-    top: 0px;
-    left: 0px;
     border: 1px solid white;
+    transition: all .5s;
+    z-index: 100;
+}
+.box {
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+    color: gray;
+    top:-999px;
+    left:-999px;
+    position: absolute;
+    border: 1px solid white;
+    animation-name: box;
+    animation-delay: 10s;
+    z-index: 10;
+}
+
+@keyframes box {
+    from{
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
