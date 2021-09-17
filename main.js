@@ -26,7 +26,7 @@ document.addEventListener('keydown', function (event) {
         document.getElementById("item").style.right = "0px"
     }
 
-
+    
     if (event.code == "ArrowUp" && (event.ctrlKey || event.metaKey)) {
         if (bott >= 100) {
             bott -= 100
