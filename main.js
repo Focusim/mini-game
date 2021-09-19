@@ -2,6 +2,8 @@ var bott = 0
 var left = 0
 var itemWidth = document.getElementById('item').offsetWidth
 var itemHeight = document.getElementById('item').offsetHeight
+var boxWidth = document.getElementById('box').offsetWidth
+var boxHeight = document.getElementById('box').offsetHeight
 var winWidth = document.documentElement.clientWidth -= itemWidth
 var winHeight = document.documentElement.clientHeight -= itemHeight
 
@@ -26,7 +28,7 @@ document.addEventListener('keydown', function (event) {
         document.getElementById("item").style.right = "0px"
     }
 
-    
+
     if (event.code == "ArrowUp" && (event.ctrlKey || event.metaKey)) {
         if (bott >= 100) {
             bott -= 100
@@ -53,8 +55,66 @@ function getRandomInt(min, max) {
 
 var randomWidth = getRandomInt(0, winWidth)
 document.getElementById('box').style.left = randomWidth + "px"
-var randomHeight =  getRandomInt(0, winHeight)
+var randomHeight = getRandomInt(0, winHeight)
 document.getElementById('box').style.top = randomHeight + "px"
+
+
+
+
+
+
+
+
+var lengthBoxX = randomWidth + boxWidth
+
+var arrBoxX = []
+for (i = randomWidth; i <= lengthBoxX; i++) {
+    arrBoxX.push(i)
+}
+
+/*вычислил ширину блока по значению left*/
+arrBoxX.forEach(function (item, index, array) {
+    arrLengthBoxX = item
+})
+
+console.log(arrBoxX)
+console.log("Стартовая точка по оси X: " + randomWidth)
+console.log("Конечная точка по оси X: " + lengthBoxX)
+
+
+var lengthBoxY = randomHeight + boxHeight
+
+var arrBoxY = []
+for (i = randomHeight; i <= lengthBoxY; i++) {
+    arrBoxY.push(i)
+}
+
+/*вычислил высоту блока по значению top*/
+arrBoxY.forEach(function (item, index, array) {
+    arrLengthBoxY = item
+})
+
+console.log(arrBoxY)
+console.log("Стартовая точка по оси Y: " + randomHeight)
+console.log("Конечная точка по оси Y: " + lengthBoxY)
+
+
+a = [1,2,3,5]
+b = [5,6,7,8,4]
+
+
+
+
+
+if (500 === arrBoxX) {
+    alert("yes")
+} else {
+    alert("no")
+}
+
+
+
+
 
 
 
