@@ -11,7 +11,7 @@ var boxHeight = document.getElementById('box').offsetHeight
 var winWidth = document.documentElement.clientWidth -= itemWidth
 var winHeight = document.documentElement.clientHeight -= itemHeight
 
-console.log("Ширина:" + winWidth + " Высота:" + winHeight) 
+console.log("Ширина:" + winWidth + " Высота:" + winHeight)
 
 document.addEventListener('keydown', function (event) {
     if (event.code == "ArrowLeft") {
@@ -51,19 +51,23 @@ document.addEventListener('keydown', function (event) {
         document.getElementById("item").style.bottom = "0px"
     }
     test1()
-    test2()
-    test()
-    return
 })
 /////////////////////////////////////////////////////////////
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min)
 }
-
 var randomWidth = getRandomInt(0, winWidth)
 document.getElementById('box').style.left = randomWidth + "px"
 var randomHeight = getRandomInt(0, winHeight)
 document.getElementById('box').style.top = randomHeight + "px"
+
+function refresh() {
+    var randomWidth = getRandomInt(0, winWidth)
+    document.getElementById('box').style.left = randomWidth + "px"
+    var randomHeight = getRandomInt(0, winHeight)
+    document.getElementById('box').style.top = randomHeight + "px"
+
+}
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 ///console.log(arrBoxX)
@@ -77,79 +81,77 @@ document.getElementById('box').style.top = randomHeight + "px"
 
 var arrItemX = []
 var arrItemY = []
+var arrBoxX = []
+var arrBoxY = []
+
 
 function test1() {
+    arrItemX = []
     checkLeft = item.getBoundingClientRect().x
     var lengthItemX = checkLeft + itemWidth
     for (i = checkLeft; i <= lengthItemX; i++) {
-        arrItemX.push(i)
+        parseInt(arrItemX.push(i))
     }
-    arrItemX.forEach(function (item, index, array) {
-        arrLengthItemX = item
-    })
-
+    //arrItemX.forEach(function (item, index, array) {
+    //    arrLengthItemX = item
+    //})
+    arrItemY = []
     checkTop = item.getBoundingClientRect().y
     var lengthItemY = checkTop + itemHeight
     for (i = checkTop; i <= lengthItemY; i++) {
         arrItemY.push(i)
     }
-    arrItemY.forEach(function (item, index, array) {
-        arrLengthItemY = item
-    })
-}
+    //arrItemY.forEach(function (item, index, array) {
+    //    arrLengthItemY = item
+    //})
 
-var arrBoxX = []
-var arrBoxY = []
 
-function test2() {
     var lengthBoxX = randomWidth + boxWidth
     for (i = randomWidth; i <= lengthBoxX; i++) {
         arrBoxX.push(i)
     }
-    arrBoxX.forEach(function (item, index, array) {
-        arrLengthBoxX = item
-    })
+    //arrBoxX.forEach(function (item, index, array) {
+    //    arrLengthBoxX = item
+    //})
 
 
     var lengthBoxY = randomHeight + boxHeight
     for (i = randomHeight; i <= lengthBoxY; i++) {
         arrBoxY.push(i)
     }
-    arrBoxY.forEach(function (item, index, array) {
-        arrLengthBoxY = item
-    })
-}
+    //arrBoxY.forEach(function (item, index, array) {
+    //    arrLengthBoxY = item
+    //})
 
-var next = 0
-
-function test() {
-    var a = arrBoxX
-    var b = arrBoxY
-    var c = arrItemX
-    var d = arrItemY
-    
+    next = 0
+    a = arrBoxX
+    b = arrBoxY
+    c = arrItemX
+    d = arrItemY
 
 
-    for (let j = 0; j < itemWidth; j++) {
-        for (let i = 0; i < boxWidth; i++) {
-            if (c[j] == a[i]) {
-                var next = 1
+    for (j = 0; j < itemWidth; j++) {
+        for (i = 0; i < boxWidth; i++) {
+            if (arrItemX[j] == arrBoxX[i]) {
+                next = 1
                 console.log("ось X совпадает")
                 break
             }
             break
         }
+
     }
     if (next === 1) {
-        for (let j = 0; j < itemHeight; j++) {
-            for (let i = 0; i < boxHeight; i++) {
-                if (d[j] == b[i]) {
-                    document.getElementById('item').style.display = "none"
+        for (j = 0; j < itemHeight; j++) {
+            for (i = 0; i < boxHeight; i++) {
+                if (arrItemY[j] == arrBoxY[i]) {
+                    refresh()
                     console.log("yes")
                     break
                 }
-                break
             }
+            break
         }
     }
+    console.log(next)
 }
