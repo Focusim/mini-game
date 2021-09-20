@@ -10,8 +10,8 @@ body {
     position: relative;
 }
 
-.bg:before{
-    content: 'Управление: Стрелками';
+.bg:before {
+    content: 'Управление: Стрелками +speed("PageUp") -speed("PageDown")';
     position: absolute;
     top: 50%;
     left: 10%;
@@ -19,39 +19,38 @@ body {
     animation-name: bgbefore;
     animation-duration: 5s;
     animation-delay: 1s;
-    animation-timing-function: cubic-bezier(1,1,1,1);
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
     opacity: 0;
     z-index: 100;
 }
 
 @keyframes bgbefore {
-    from{
+    from {
         margin-left: 0px;
         opacity: 0;
         color: white;
     }
-    20%{
+    20% {
         margin-left: 20px;
         opacity: 1;
         color: red;
     }
-    50%{
+    50% {
         margin-left: 50px;
         color: purple;
     }
-    to{
+    to {
         margin-left: 100px;
         opacity: 0;
         color: white;
     }
-
 }
 
 .inner {
     width: 100px;
     height: 100px;
     background: radial-gradient(red, blue, purple);
-    border-radius: 50px;
+    /*border-radius: 50px;*/
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -62,18 +61,19 @@ body {
     /*transition: all .5s;*/
     z-index: 100;
 }
+
 .box {
     width: 100px;
     height: 100px;
     background: yellow;
-    border-radius: 50px;
+    /*border-radius: 50px;*/
     display: flex;
     align-items: center;
     justify-content: space-around;
     font-size: 30px;
     color: gray;
-    top:-999px;
-    left:-999px;
+    top: -999px;
+    left: -999px;
     position: absolute;
     border: 1px solid white;
     animation-name: box;
@@ -82,10 +82,18 @@ body {
 }
 
 @keyframes box {
-    from{
+    from {
         opacity: 0;
     }
     to {
         opacity: 1;
     }
+}
+
+.score {
+    font-size: 60px;
+    font-weight: 700;
+    color: blue;
+    width: max-content;
+    margin: 0 auto;
 }
