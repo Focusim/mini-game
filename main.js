@@ -11,11 +11,80 @@ var winWidth = document.documentElement.clientWidth -= itemWidth
 var winHeight = document.documentElement.clientHeight -= itemHeight
 
 // количество пикселей передвижения 'item'
-var number = 1
+var number = 101
 
 console.log("Ширина:" + winWidth + " Высота:" + winHeight)
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+
+var xDown = null;
+var yDown = null;
+
+function getTouches(evt) {
+    return evt.touches ||             // browser API
+        evt.originalEvent.touches; // jQuery
+}
+
+function handleTouchStart(evt) {
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+};
+
+function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        if (xDiff > 0) {
+            if (left >= number) {
+                left -= number
+                document.getElementById("item").style.right = null
+            }
+            document.getElementById("item").style.left = left + "px"
+        } else {
+            if (left <= winWidth) {
+                left += number
+                document.getElementById("item").style.left = left + "px"
+            }
+        }
+    } else {
+        if (yDiff > 0) {
+            if (topp >= number) {
+                topp -= number
+                document.getElementById("item").style.bottom = null
+            }
+            document.getElementById("item").style.top = topp + "px"
+        } else {
+            if (topp <= winHeight) {
+                topp += number
+                document.getElementById("item").style.top = topp + "px"
+            }
+        }
+    }
+    if (left > winWidth) {
+        document.getElementById("item").style.left = null
+        document.getElementById("item").style.right = "0px"
+    }
+    if (topp > winHeight) {
+        document.getElementById("item").style.top = null
+        document.getElementById("item").style.bottom = "0px"
+    }
+    
+    xDown = null;
+    yDown = null;
+    test1()
+};
+
+document.addEventListener('keydown', function (event) {
     if (event.code == "PageUp") {
         number += 10
     }
