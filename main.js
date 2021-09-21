@@ -203,6 +203,7 @@ function test1() {
                     score += 1
                     document.getElementById('score').innerHTML = "Score: " + score
                     console.log("yes")
+                    test1()
                     break
                 }
             }
