@@ -12,7 +12,8 @@ body {
 
 @media (max-width: 1200px){
     .bg{
-        border-bottom: 330px solid yellow;
+        border-bottom: 70px solid yellow;
+        margin-bottom: 70px;
     }
 }
 
