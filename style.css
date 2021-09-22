@@ -8,7 +8,12 @@ body {
     background: linear-gradient(red, blue, purple);
     height: 100vh;
     position: relative;
-    border: 10px solid yellow;
+}
+
+@media (max-width: 1200px){
+    .bg{
+        border-bottom: 50px solid yellow;
+    }
 }
 
 .bg:before {
